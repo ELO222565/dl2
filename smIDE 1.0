@@ -1,15 +1,16 @@
+import os
 import tkinter as tk
 from tkinter import ttk, scrolledtext, filedialog, messagebox, simpledialog
-import os
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import get_formatter_by_name
 
 class smIDE:
+
     def __init__(self, root):
         self.root = root
-        self.root.title("smIDE DevBeta ver0.0.5")
-        self.root.geometry("1250x1000")
+        self.root.title("smIDE 1.0")
+        self.root.geometry("1250x1250")
         self.root.option_add('*Font', 'helvetica 11')
 
         self.create_menu()
@@ -45,13 +46,21 @@ class smIDE:
         self.text_widgets = {}
 
         for lang in languages:
-            text_widget = scrolledtext.ScrolledText(self.notebook, wrap=tk.WORD, bg='#282c34', fg='white', insertbackground='white', insertwidth=4, padx=10, pady=10)
+            text_widget = scrolledtext.ScrolledText(self.notebook,
+                                                    wrap=tk.WORD,
+                                                    bg='#282c34',
+                                                    fg='white',
+                                                    insertbackground='white',
+                                                    insertwidth=4,
+                                                    padx=10,
+                                                    pady=10)
             text_widget.config(font=('helvetica', 12))
             self.notebook.add(text_widget, text=lang)
             self.text_widgets[lang] = text_widget
 
         self.notebook.pack(side=tk.LEFT, expand=1, fill="both")
-        self.notebook.bind("<ButtonRelease-1>", self.on_tab_selected)  # Bind event to tab selection
+        self.notebook.bind("<ButtonRelease-1>",
+                           self.on_tab_selected)  # Bind event to tab selection
 
     def create_file_explorer(self):
         frame = ttk.Frame(self.root)
@@ -63,7 +72,12 @@ class smIDE:
         label = ttk.Label(frame, text="File Explorer", font=('helvetica', 12))
         label.pack(pady=10)
 
-        self.file_listbox = tk.Listbox(frame, selectmode=tk.SINGLE, bg='#282c34', fg='white', selectbackground='#61dafb', font=('helvetica', 11))
+        self.file_listbox = tk.Listbox(frame,
+                                       selectmode=tk.SINGLE,
+                                       bg='#282c34',
+                                       fg='white',
+                                       selectbackground='#61dafb',
+                                       font=('helvetica', 11))
         self.file_listbox.pack(expand=1, fill="both")
 
         # Bind double-click event to open file or change directory
@@ -77,7 +91,7 @@ class smIDE:
         new_button = ttk.Button(toolbar, text="New", command=self.new_file)
         open_button = ttk.Button(toolbar, text="Open", command=self.open_file)
         save_button = ttk.Button(toolbar, text="Save", command=self.save_file)
-        plus_button = ttk.Button(toolbar, text="+", command=self.create_new_tab)
+        plus_button = ttk.Button(toolbar, text="+ add Tab +", command=self.create_new_tab)
 
         new_button.pack(side=tk.LEFT, padx=5)
         open_button.pack(side=tk.LEFT, padx=5)
@@ -114,7 +128,13 @@ class smIDE:
         # Update the currently active tab
         active_tab = self.notebook.tab(self.notebook.select(), "text")
         self.current_tab = active_tab
-        extension_mapping = {"HTML": "html", "CSS": "css", "SCSS": "scss", "JavaScript": "js", "Python": "py"}
+        extension_mapping = {
+            "HTML": "html",
+            "CSS": "css",
+            "SCSS": "scss",
+            "JavaScript": "js",
+            "Python": "py"
+        }
         self.current_extension = extension_mapping.get(active_tab, "")
 
     def open_selected_file(self, event):
@@ -130,7 +150,9 @@ class smIDE:
                     content = file.read()
                     # Use Pygments for syntax highlighting
                     lexer = get_lexer_by_name(self.current_extension.lower())
-                    formatter = get_formatter_by_name("html", linenos=True, cssclass="source")
+                    formatter = get_formatter_by_name("html",
+                                                      linenos=True,
+                                                      cssclass="source")
                     highlighted_content = highlight(content, lexer, formatter)
                     text_widget = self.text_widgets[self.current_tab]
                     text_widget.delete(1.0, tk.END)
@@ -138,7 +160,8 @@ class smIDE:
                     self.notebook.tab(text_widget, text=f"{self.current_tab} x{count}")
 
     def open_file(self):
-        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+        file_path = filedialog.askopenfilename(
+            filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
         if file_path:
             with open(file_path, "r") as file:
                 content = file.read()
@@ -151,7 +174,10 @@ class smIDE:
     def save_file(self):
         if self.current_tab:
             if hasattr(self, 'current_extension') and self.current_extension:
-                file_path = filedialog.asksaveasfilename(defaultextension=f".{self.current_extension}", filetypes=[(f"{self.current_extension.upper()} files", f"*.{self.current_extension}"), ("All files", "*.*")])
+                file_path = filedialog.asksaveasfilename(
+                    defaultextension=f".{self.current_extension}",
+                    filetypes=[(f"{self.current_extension.upper()} files",
+                                f"*.{self.current_extension}"), ("All files", "*.*")])
                 if file_path:
                     with open(file_path, "w") as file:
                         text_widget = self.text_widgets[self.current_tab]
@@ -159,14 +185,18 @@ class smIDE:
                         file.write(content)
                     self.update_file_list()  # Update file list after saving
             else:
-                messagebox.showwarning("Save Error", "Please select a language tab first.")
+                messagebox.showwarning("Save Error",
+                                       "Please select a language tab first.")
         else:
             messagebox.showwarning("Save Error", "Please select a tab to save.")
 
     def save_file_as(self):
         if self.current_tab:
             if hasattr(self, 'current_extension') and self.current_extension:
-                file_path = filedialog.asksaveasfilename(defaultextension=f".{self.current_extension}", filetypes=[(f"{self.current_extension.upper()} files", f"*.{self.current_extension}"), ("All files", "*.*")])
+                file_path = filedialog.asksaveasfilename(
+                    defaultextension=f".{self.current_extension}",
+                    filetypes=[(f"{self.current_extension.upper()} files",
+                                f"*.{self.current_extension}"), ("All files", "*.*")])
                 if file_path:
                     with open(file_path, "w") as file:
                         text_widget = self.text_widgets[self.current_tab]
@@ -174,23 +204,45 @@ class smIDE:
                         file.write(content)
                     self.update_file_list()  # Update file list after saving
             else:
-                messagebox.showwarning("Save Error", "Please select a language tab first.")
+                messagebox.showwarning("Save Error",
+                                       "Please select a language tab first.")
         else:
             messagebox.showwarning("Save Error", "Please select a tab to save.")
 
     def create_new_tab(self):
         # Prompt user to enter the name of the new tab
-        new_tab_name = simpledialog.askstring("New Tab", "Enter the name for the new tab:", parent=self.root)
+        new_tab_name = simpledialog.askstring("New Tab",
+                                              "Enter the name for the new tab:",
+                                              parent=self.root)
         if new_tab_name:
             # Prompt user to select a language for the new tab
-            language_options = ["Python", "HTML", "CSS", "SCSS", "JavaScript", "Undefined"]
-            selected_language = simpledialog.askstring("New Tab", "Select a language for the new tab:", parent=self.root, initialvalue="Python",
-                                                      show=list(map(lambda x: x.lower(), language_options)))
+            language_options = [
+                "Python", "HTML", "CSS", "SCSS", "JavaScript", "Undefined"
+            ]
+            selected_language = simpledialog.askstring(
+                "New Tab",
+                "Select a language for the new tab:",
+                parent=self.root,
+                initialvalue="Undefined")
+
+            # Validate the selected_language to ensure correct display
+            if selected_language is not None:
+                selected_language = selected_language.lower()
+                if selected_language not in map(lambda x: x.lower(), language_options):
+                    selected_language = ""
+
             if selected_language:
                 if selected_language.lower() == "undefined":
                     selected_language = ""  # Set to an empty string for an undefined language
                 # Create a new tab with the specified language
-                text_widget = scrolledtext.ScrolledText(self.notebook, wrap=tk.WORD, bg='#282c34', fg='white', insertbackground='white', insertwidth=4, padx=10, pady=10)
+                text_widget = scrolledtext.ScrolledText(self.notebook,
+                                                        wrap=tk.WORD,
+                                                        bg='#282c34',
+                                                        fg='white',
+                                                        insertbackground='white',
+                                                        insertwidth=4,
+                                                        padx=10,
+                                                        pady=10)
                 text_widget.config(font=('helvetica', 12))
                 tab_name = f"{new_tab_name} ({selected_language})"
                 self.notebook.add(text_widget, text=tab_name)
@@ -199,7 +251,13 @@ class smIDE:
 
                 # Set the current_tab and current_extension attributes
                 self.current_tab = tab_name
-                extension_mapping = {"HTML": "html", "CSS": "css", "SCSS": "scss", "JavaScript": "js", "Python": "py"}
+                extension_mapping = {
+                    "HTML": "html",
+                    "CSS": "css",
+                    "SCSS": "scss",
+                    "JavaScript": "js",
+                    "Python": "py"
+                }
                 self.current_extension = extension_mapping.get(selected_language, "")
 
                 self.update_tab_count(tab_name)  # Update tab count
@@ -218,4 +276,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     SMIDE = smIDE(root)
     root.mainloop()
-
