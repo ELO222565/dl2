@@ -10,3 +10,5 @@ html, css, scss, javascript and python its going to automaticly save it as their
 also:
 when saving please select 'file' then 'save' or 'save as' because the shortcuts Ctrl + s not always work
 
+and: if the undefined tab does not save please instead of undefined type just a '.' and if it still doesnt work then copy your code and paste it into a tab like html and then when saving just choose 
+'all files' and delete the .html format and type the format you want
