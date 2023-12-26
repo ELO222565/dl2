@@ -7,3 +7,5 @@ File Explorer: file explorer has been removed because it was useless instead it 
 Monitor Compatibility: not all peaople have 16:9 monitors with 1920x1080px so now smIDE is smaller but you still can resize it
 
 System Compatibility: i fixed Linux compatibility
+
+Also: Windows thinks that this program is a virus but dont worry you can look into the script and see that this is not a virus because windows thinks this is malware i think but as i said its not a virus just a project that i made for fun!
