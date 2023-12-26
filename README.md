@@ -1,11 +1,9 @@
-About smIDE
+Update 1.2:
 
-Usage:
+Tabs: you can now close tabs and saving tabs is fixed
 
-Tabs: when creating a new tab you can name the tab whatever you like but when adding the extension the options are html, css, scss,
-javascript and undefined if you want to code in for a example c or ruby or even c++ you just type 'Undefined' and it will save it as al files
-because i have just fixed the bug that it cant save today (12/23/2023)
+File Explorer: file explorer has been removed because it was useless instead it was replaced by a plain text spac for notes
 
+Monitor Compatibility: not all peaople have 16:9 monitors with 1920x1080px so now smIDE is smaller but you still can resize it
 
-also:
-when saving a file if you click 'save' or 'save as' it doesnt matter which one you clicked
+System Compatibility: i fixed Linux compatibility
