@@ -8,4 +8,4 @@ Monitor Compatibility: not all peaople have 16:9 monitors with 1920x1080px so no
 
 System Compatibility: i fixed Linux compatibility
 
-Also: Windows thinks that this program is a virus but dont worry you can look into the script and see that this is not a virus because windows thinks this is malware i think but as i said its not a virus just a project that i made for fun!
+Also: Windows thinks that this program is a virus but dont worry you can look into the script and see that this is not a virus because windows thinks this is malware i think but as i said its not a virus just a project that i made for fun! so FUCK YOU WINDOWS!!!!!1!!!!!111!1111!!1111!1!1 (Also that is why i use Arch Linux (without gnu cuz gnu is bloat))
