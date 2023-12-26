@@ -1,6 +1,6 @@
 Update 1.2:
 
-Tabs: you can now close tabs and saving tabs is fixed
+Tabs: you can now close tabs and saving tabs is fixed but you still cannot close the automaticly created ones this will be fixed in a bug fix in version 1.3 or 1.2.1
 
 File Explorer: file explorer has been removed because it was useless instead it was replaced by a plain text spac for notes
 
