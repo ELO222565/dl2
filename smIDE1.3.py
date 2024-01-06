@@ -35,7 +35,7 @@ class NoteSpace(ttk.Frame):
 class smIDE:
     def __init__(self, root):
         self.root = root
-        self.root.title("smIDE 1.2")
+        self.root.title("smIDE 1.3")
         self.root.geometry("1250x750")
         self.root.option_add('*Font', 'helvetica 11')
 
