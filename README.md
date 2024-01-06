@@ -29,6 +29,6 @@ smIDE is a lightweight Integrated Development Environment (IDE) developed in Pyt
    - Click the 'x' button on the tab to close it. You will be prompted to confirm the action.
      
 ## Feedback and Support
-For feedback, suggestions, or support, please visit my [official website](https://sfymmik.fc2.com) or contact me on discord: ball_sx.
+For feedback, suggestions, or support, please visit my [official website](https://sfymmik.web.fc2.com) or contact me on discord: ball_sx.
 
 Thank you for using smIDE!
