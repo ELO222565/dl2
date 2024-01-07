@@ -5,7 +5,6 @@ smIDE is a lightweight Integrated Development Environment (IDE) developed in Pyt
 
 ## Features
 - **Tabbed Interface:** Easily manage and switch between multiple files with the tabbed interface.
-- **Syntax Highlighting:** The IDE supports syntax highlighting for different programming languages to enhance code readability.
 - **File Operations:** Perform standard file operations like creating new files, opening existing files, saving, and saving as.
 - **Dynamic Tabs:** Tabs dynamically update based on the selected language and file name.
 
