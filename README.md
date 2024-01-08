@@ -1,3 +1,6 @@
+![Alt Text](logo.jpg)
+
+
 # About smIDE
 
 ## Introduction
